@@ -9,7 +9,9 @@ Personally, I am very passionate about proper diagnosis and treatment for mental
 This challenged used anxiety data collected from 30 teenagers over the course of a year, of which 12 met the standards for having clinical GAD based on at least one monthly GAD-7 assessment. This data was collected as a part of a study published in the Clinical Psychological Science journal, “A year in the social life of a teenager: Within-person fluctuations in stress, phone communication, and anxiety and depression.” Anxiety was measured at the end of every month using the GAD-7 (in `Monthly_Data.csv`) and three times each day with a one item anxiety severity assessment (in `Momentary_Data.csv`).
 
 ### Assumptions
-
+1) This project assumes that the methods used on anxiety measurements for women between the ages of 15 to 17 can be generalized on data from a larger set of participants that is more representative of the general population. 
+2) We are assuming that we can treat each month of a person's data as separate individuals (e.g. individual A, who participated in the study for 1 year, can be treated as 12 different individuals- one for each month) and not introduce any issues/biases during training. 
+3) We are assuming that a sequence of anxiety data over the course of the month can be represented in a small latent feature space and still somewhat accurately be decoded to reconstruct the daily anxiety data sequence.  
 
 ### Data Preprocessing 
 All preprocessing of this data was completed in Python and Pandas. It can be found in `preprocessing.ipynb` (`preprocessing.html` for a browser view of the notebook). The output can be found in `Formatted_Data.csv`. 
@@ -47,6 +49,15 @@ Model analysis primarily relied on Hierarchical Clustering, UMAP, and regression
 
 ##### r-values 
 The analysis indicates that the LSTM model is quite reliable in predicting a sequence of a person’s anxiety data over the course of a month using only 3 features. We compute the r-values of a person’s actual sequence of anxiety over the course of a month versus the model’s predicted sequence of anxiety over the course of the month. With an average r-value of 0.8319 for the individuals in the testing data, it is evident that the 3 features extracted from the LSTM model are able to capture a person’s experience with anxiety over the course of a month quite well.
+
+##### Hierarchical Clustering
+Finally, the hierarchical clustering demonstrates that the features that are predictive of a person’s daily anxiety over the course of a month are not clustering on GAD-7 scores. There’s two main implications to this: 1) People with the same GAD-7 score do not necessarily experience anxiety the same way on a day-to-day basis 2) People who experience anxiety in a similar way on a day-to-day basis don’t necessarily have similar GAD-7 scores. Both of these takeaways are crucial, as they demonstrate a greater need for new methods that can better capture one’s experience with anxiety on a day-to-day basis. By using new methods like the one in this project to assess one’s anxiety, we can better prescribe treatments that more accurately address how a person actually experiences anxiety. 
+
+<img width="527" alt="Screen Shot 2022-03-03 at 4 39 26 PM" src="https://user-images.githubusercontent.com/62949093/156657111-88cbf138-2878-4572-bbcc-67a808d38470.png">
+
+##### UMAP Analysis
+We then try to explain how these 3 features from the LSTM model are clustering. We use the UMAP and color our points based on the mean anxiety, variance in anxiety, and percent
+missingness (as a sanity check to make sure our model isn’t learning based on data missingness). As evidenced in the `analysis.ipynb` file, it is clear that clustering is not happening on any of the aforementioned features. This means the LSTM model is able to help us extract some non-obvious features that can be used to predict a person’s experience with anxiety over the course of a month. 
 
 ##### Regression Descriptors 
 
