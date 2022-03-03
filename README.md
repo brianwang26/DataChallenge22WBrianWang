@@ -9,7 +9,7 @@ Personally, I am very passionate about proper diagnosis and treatment for mental
 This challenged used anxiety data collected from 30 teenagers over the course of a year, of which 12 met the standards for having clinical GAD based on at least one monthly GAD-7 assessment. This data was collected as a part of a study published in the Clinical Psychological Science journal, “A year in the social life of a teenager: Within-person fluctuations in stress, phone communication, and anxiety and depression.” Anxiety was measured at the end of every month using the GAD-7 (in `Monthly_Data.csv`) and three times each day with a one item anxiety severity assessment (in `Momentary_Data.csv`).
 
 ### Data Preprocessing 
-All preprocessing of this data was completed in Python. It can be found in `preprocessing.ipynb` (`preprocessing.html` for a browser view of the notebook). The output can be found in `Formatted_Data.csv`. 
+All preprocessing of this data was completed in Python and Pandas. It can be found in `preprocessing.ipynb` (`preprocessing.html` for a browser view of the notebook). The output can be found in `Formatted_Data.csv`. 
 
 ##### Separating data into person-months
 To assess how an individual’s day-to-day experiences with anxiety relates to monthly GAD-7 assessments of their anxiety, each participant’s monthly GAD-7 scores and intradaily self-reported assessments of their anxiety level collected in the morning, afternoon, and evening were included in the present analysis. Participant's anxiety information was treated separately on a month-by-month basis, henceforth referred to as a person-month (e.g. the analysis treats data from month one of the study for person A as separate from data from month 4 of the study for person A). For each person-month, the monthly GAD-7 score and the 28 days of daily anxiety scores leading up to and inclusive of the day of their monthly in-person assessment is extracted. Thus, for each person-month, 84 points of daily anxiety data are considered due to intradaily collection of morning, afternoon, and evening measurements of their anxiety for 28 days. By processing the raw data through this method, 236 person-months worth of anxiety data are constructed. This breakdown of individuals into different person-months allows us to create more "individuals" in our study and allows us to focus on how a monthly measurement (GAD-7) relates to daily anxiety. 
@@ -25,6 +25,7 @@ Daily anxiety measurements and monthly GAD-7 scores were normalized to be on a c
 There was lots of missing daily anxiety measurements data. Person-months with over 70% of daily anxiety measurements missing were excluded from analysis, resulting in 66 of the original 236 person-months remaining eligible for analysis. Every participant in the study was represented by at least one person-month, with a maximum of three person-months for a given participant. 
 
 ### Model Building and Training 
+All model building was completed in Tensorflow. It can be found in `modelling.ipynb` (`modelling.html` for a browser view of the notebook). The output can be found in `Formatted_Data.csv`. 
 
 ##### Model Architecture 
 The first goal of the machine learning approach to analyzing the data is to see if the original feature space of the daily anxiety data (84 anxiety measurements per month) can be reduced into a smaller latent feature space that still represents all the variation in the original data. To accomplish this and ensure that the features were capturing enough variation, the model is built with an encoder-decoder framework, which interrogates if a smaller feature space can be decoded to roughly resemble the original sequence of daily anxiety data, thus suggesting that the features in the smaller feature space are capturing the variability in the larger feature space and serve as a comprehensive overview of a person’s day-to-day anxiety experience over the course of a month. 
@@ -34,11 +35,11 @@ To accomplish this goal an encoder-decoder neural network framework was built co
 ##### Model Tuning 
 The model was trained with 46 person-months worth of data and was tested against 20 person-months worth of data. 
 Many different layer sizes were tested and layer sizes were optimized for the encoder model (with the decoder model always having the same layer sizes as the encoder model). To measure the accuracy of each model’s decoding of the feature layer back to the original sequence, each time point was represented as having an x-value of its respective anxiety value in the original sequence and a y-value of its respective anxiety value in the predicted sequence. While building the model architecture, optimizing for a small feature layer size had to be balanced against the ability to decode this feature layer into the original sequence of daily anxiety data somewhat accurately. 
-A 70%-30% train-test split for the model tuning framework. The model was trained for 1500 epochs and used the model weights for the epoch at which the testing and training loss began to diverge (as seen below in the training vs. validation curve) 
+A 70%-30% train-test split for the model tuning framework. The model was trained for 1500 epochs and used the model weights for the epoch at which the testing and training loss began to diverge (as seen below in the training vs. validation curve). The latent feature space for the 66 person-months can be found in `output_LSTM_3_layer.csv`. 
 
 <img width="666" alt="Screen Shot 2022-03-03 at 3 50 54 PM" src="https://user-images.githubusercontent.com/62949093/156650832-519d38d4-fc8e-4429-a5c1-e372aa4fce9d.png">
 
-
-
+### Model Metrics and Analysis 
+Model analysis primarily relied on UMAP, Hierarchical Clustering, and regression in R. Some preliminary analysis can be found in `modelling.ipynb` (`modelling.html` for a browser view of the notebook) and the remaining analysis can be found in `analysis.ipynb` (`analysis.html` for a browser view of the notebook). The output can be found in `Formatted_Data.csv`. 
 
 
