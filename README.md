@@ -20,6 +20,19 @@ Daily anxiety measurements and monthly GAD-7 scores were normalized to be on a c
 ##### Dealing with Outliers 
 There was lots of missing daily anxiety measurements data. Person-months with over 70% of daily anxiety measurements missing were excluded from analysis, resulting in 66 of the original 236 person-months remaining eligible for analysis. Every participant in the study was represented by at least one person-month, with a maximum of three person-months for a given participant. 
 
+### Model Building and Training 
+
+##### Model Architecture 
+The first goal of the machine learning approach to analyzing the data is to see if the original feature space of the daily anxiety data (84 anxiety measurements per month) can be reduced into a smaller latent feature space that still represents all the variation in the original data. To accomplish this and ensure that the features were capturing enough variation, the model is built with an encoder-decoder framework, which interrogates if a smaller feature space can be decoded to roughly resemble the original sequence of daily anxiety data, thus suggesting that the features in the smaller feature space are capturing the variability in the larger feature space and serve as a comprehensive overview of a person’s day-to-day anxiety experience over the course of a month. 
+
+To accomplish this goal an encoder-decoder neural network framework was built consisting mainly of Long-Short Term Memory (LSTM) nodes. Inputs to the LSTM model are 66 person-month’s worth of anxiety data separated into three features (morning, afternoon and evening anxiety) and 28 time points. The encoder section of the model is responsible for reducing this feature space into three features per person. The decoder portion of the model then reconstructs the daily anxiety data back from these three features. In the LSTM model, there are three layers for the encoder and three layers for the decoder. The encoder contained three layers of 64, 32 and 3 nodes, respectively, which was mirrored in the decoder framework. The final layer is a TimeDistributed layer wrapped on a Dense Layer on the output layer of the model. The dense layer has three units, which allows us to predict the sequence of anxiety data three measurements (morning, afternoon, evening) at a time (i.e. one day at a time). The model uses the ADAM optimization algorithm for training and uses the mean absolute error as the loss function. 
+
+##### Model Tuning 
+The model was trained with 46 person-months worth of data and was tested against 20 person-months worth of data. 
+Many different layer sizes were tested and layer sizes were optimized for the encoder model (with the decoder model always having the same layer sizes as the encoder model). To measure the accuracy of each model’s decoding of the feature layer back to the original sequence, each time point was represented as having an x-value of its respective anxiety value in the original sequence and a y-value of its respective anxiety value in the predicted sequence. While building the model architecture, optimizing for a small feature layer size had to be balanced against the ability to decode this feature layer into the original sequence of daily anxiety data somewhat accurately. 
+A 70%-30% train-test split for the model tuning framework. The model was trained for 1500 epochs and used the model weights for the epoch at which the testing and training loss began to diverge (as seen below in the training vs. validation curve) 
+
+
 
 
 
