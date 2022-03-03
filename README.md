@@ -8,6 +8,9 @@ Personally, I am very passionate about proper diagnosis and treatment for mental
 ### The Datasets
 This challenged used anxiety data collected from 30 teenagers over the course of a year, of which 12 met the standards for having clinical GAD based on at least one monthly GAD-7 assessment. This data was collected as a part of a study published in the Clinical Psychological Science journal, “A year in the social life of a teenager: Within-person fluctuations in stress, phone communication, and anxiety and depression.” Anxiety was measured at the end of every month using the GAD-7 (in `Monthly_Data.csv`) and three times each day with a one item anxiety severity assessment (in `Momentary_Data.csv`).
 
+### Assumptions
+
+
 ### Data Preprocessing 
 All preprocessing of this data was completed in Python and Pandas. It can be found in `preprocessing.ipynb` (`preprocessing.html` for a browser view of the notebook). The output can be found in `Formatted_Data.csv`. 
 
@@ -40,6 +43,17 @@ A 70%-30% train-test split for the model tuning framework. The model was trained
 <img width="666" alt="Screen Shot 2022-03-03 at 3 50 54 PM" src="https://user-images.githubusercontent.com/62949093/156650832-519d38d4-fc8e-4429-a5c1-e372aa4fce9d.png">
 
 ### Model Metrics and Analysis 
-Model analysis primarily relied on UMAP, Hierarchical Clustering, and regression in R. Some preliminary analysis can be found in `modelling.ipynb` (`modelling.html` for a browser view of the notebook) and the remaining analysis can be found in `analysis.ipynb` (`analysis.html` for a browser view of the notebook). The output can be found in `Formatted_Data.csv`. 
+Model analysis primarily relied on Hierarchical Clustering, UMAP, and regression in R. Some preliminary analysis can be found in `modelling.ipynb` (`modelling.html` for a browser view of the notebook) and the remaining analysis can be found in `analysis.ipynb` (`analysis.html` for a browser view of the notebook). The output can be found in `Formatted_Data.csv`. 
+
+##### r-values 
+The analysis indicates that the LSTM model is quite reliable in predicting a sequence of a person’s anxiety data over the course of a month using only 3 features. We compute the r-values of a person’s actual sequence of anxiety over the course of a month versus the model’s predicted sequence of anxiety over the course of the month. With an average r-value of 0.8319 for the individuals in the testing data, it is evident that the 3 features extracted from the LSTM model are able to capture a person’s experience with anxiety over the course of a month quite well.
+
+##### Regression Descriptors 
+
+Because the UMAP analysis does not allow us to understand how the latent features are being determined, I used R to regress various properties of the daily anxiety data (variability, percent missing, etc.) against the 3 latent features. As shown below, feature 1 is heavily correlated with the mean daily anxiety (p-value of 0.00228) and feature 3 is heavily correlated with a measure of variance- root mean square of successive differences, which tells us roughly how much anxiety varied on a day-to-day basis for each person-month (p-value of 0.0147). Thus, it seems like our LSTM model is learning on both the mean anxiety and variance of anxiety to be able to properly reconstruct daily anxiety sequences (with 84 data points) from 3 latent features. 
+
+<img width="740" alt="Screen Shot 2022-03-03 at 4 10 06 PM" src="https://user-images.githubusercontent.com/62949093/156653421-3534517b-3c7d-411e-9451-934c3a80bd06.png">
+<img width="739" alt="Screen Shot 2022-03-03 at 4 10 12 PM" src="https://user-images.githubusercontent.com/62949093/156653423-ddbfc029-82c9-43e5-8329-254d4f955a17.png">
+<img width="750" alt="Screen Shot 2022-03-03 at 4 10 16 PM" src="https://user-images.githubusercontent.com/62949093/156653424-9919489d-399a-48cf-8efc-ea3dd5cacaab.png">
 
 
