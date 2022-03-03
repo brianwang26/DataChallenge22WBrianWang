@@ -14,6 +14,10 @@ All preprocessing of this data was completed in Python. It can be found in `prep
 ##### Separating data into person-months
 To assess how an individual’s day-to-day experiences with anxiety relates to monthly GAD-7 assessments of their anxiety, each participant’s monthly GAD-7 scores and intradaily self-reported assessments of their anxiety level collected in the morning, afternoon, and evening were included in the present analysis. Participant's anxiety information was treated separately on a month-by-month basis, henceforth referred to as a person-month (e.g. the analysis treats data from month one of the study for person A as separate from data from month 4 of the study for person A). For each person-month, the monthly GAD-7 score and the 28 days of daily anxiety scores leading up to and inclusive of the day of their monthly in-person assessment is extracted. Thus, for each person-month, 84 points of daily anxiety data are considered due to intradaily collection of morning, afternoon, and evening measurements of their anxiety for 28 days. By processing the raw data through this method, 236 person-months worth of anxiety data are constructed. This breakdown of individuals into different person-months allows us to create more "individuals" in our study and allows us to focus on how a monthly measurement (GAD-7) relates to daily anxiety. 
 
+Upon initial inspection of plots of monthly GAD scores vs. daily anxiety data, it seems like daily anxiety generally varies around the value for monthly GAD-7 scores. Yet GAD-7 scores are often prone to recency bias (affected most by the daily anxiety measurements in the days leading up to the monthly measurement) and fail to tell us the story about how variable a person's anxiety experience is. 
+
+<img width="782" alt="Screen Shot 2022-03-03 at 3 53 18 PM" src="https://user-images.githubusercontent.com/62949093/156651143-287b18c7-ec0a-41d5-96e6-a5b9824c0a21.png">
+
 ##### Normalization
 Daily anxiety measurements and monthly GAD-7 scores were normalized to be on a consistent scale (0-1). Similarly, missing values for anxiety measurements were assigned to a value of -1. Because daily anxiety measurements range from 1-7 and GAD-7 Scores range from 0-21, there are no significant outliers in terms of values in our dataset. 
 
@@ -32,6 +36,7 @@ The model was trained with 46 person-months worth of data and was tested against
 Many different layer sizes were tested and layer sizes were optimized for the encoder model (with the decoder model always having the same layer sizes as the encoder model). To measure the accuracy of each model’s decoding of the feature layer back to the original sequence, each time point was represented as having an x-value of its respective anxiety value in the original sequence and a y-value of its respective anxiety value in the predicted sequence. While building the model architecture, optimizing for a small feature layer size had to be balanced against the ability to decode this feature layer into the original sequence of daily anxiety data somewhat accurately. 
 A 70%-30% train-test split for the model tuning framework. The model was trained for 1500 epochs and used the model weights for the epoch at which the testing and training loss began to diverge (as seen below in the training vs. validation curve) 
 
+<img width="666" alt="Screen Shot 2022-03-03 at 3 50 54 PM" src="https://user-images.githubusercontent.com/62949093/156650832-519d38d4-fc8e-4429-a5c1-e372aa4fce9d.png">
 
 
 
