@@ -12,6 +12,8 @@ There are 4 main statistics that I wanted to look into: GDP, GDP per Capita, Med
 
 ### What Insights are Left Out
 
+Much more of the minute details are left out of our visualizations. For instance, we do not report any inform on statistics by quartile/decile because with a limitation of 4 visualizations, it is hard to include an understanding of the underlying distributions of the statistics of interest. Furthermore, insights regarding the quality of the data as well as the source of the data are also left out. I did this because I think the main statistics of interest are more important than where the data came from (assuming that the data is all of some certain decent quality). 
+
 ## Part 2 
 
 ### Objective 
