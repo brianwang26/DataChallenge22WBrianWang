@@ -1,5 +1,17 @@
 # DALI Lab Data Challenge 22W by Brian Wang
 
+## Part 1 
+
+### Data Visualization Strategy 
+
+I decided to have all 4 of my visualizations be world maps that allow us to view the distribution of certain statistics of interest among different countries. This way, viewers of the graphs can better understand regional trends while also being able to get rough ideas of the values of certain statistics for the countries they are interested in. 
+
+### What Insights are Mentioned
+
+There are 4 main statistics that I wanted to look into: GDP, GDP per Capita, Median Income, and Gini Coefficient. These 4 statistics work in harmony to tell a story with the data. The GDP tells you by sheer number, which countries are the most productive and contribute the most to the global economy. Then, GDP per Capita gives us a more nuanced view of GDP, as we are able to see the average individual productivity for each country. Next, the median income relates to the GDP per Capita. It tells us how much the people are gaining better lives (measured through salary) as a result of their average individual productivity (GDP per Capita). Finally, the Gini Coefficient allows us to understand the income inequality of a country. This allows us to contextualize the country's GDP. For a country with a high GDP, are only the top players in the market benefitting? 
+
+### What Insights are Left Out
+
 ## Part 2 
 
 ### Objective 
