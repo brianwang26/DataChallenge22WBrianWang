@@ -18,17 +18,25 @@ Much more of the minute details are left out of our visualizations. For instance
 
 Looking at GDP by country, it appears that the main contributors to the global economy are in North America and Europe. Meanwhile, the productivity of South America and parts of Asia are relatively low. It seems like the continent of Africa has many of the countries in the bottom 2 quintiles in terms of GDP. 
 
+<img width="1024" alt="Screen Shot 2022-03-03 at 8 50 48 PM" src="https://user-images.githubusercontent.com/62949093/156683843-e7178af7-f71c-4b39-9671-31e7e59a8766.png">
+
 ### Visualization 2: GDP per Capita
 
 Looking at GDP per Capita, we get a different story from Visualization 1. While Europe also leads in GDP per Capita, GDP power houses in North America seem less productive on a per capita basis. Meanwhile, it becomes evident that countries in Asia are generally less productive on a per capita basis. Finally, the countries in Africa are still among the lowest in both productivity and productivity per person. 
+
+<img width="1015" alt="Screen Shot 2022-03-03 at 8 50 56 PM" src="https://user-images.githubusercontent.com/62949093/156683852-970e7a78-e5c1-421a-a2ae-070117b1c0ad.png">
 
 ### Visualization 3: Median Income
 
 Looking at Median income, we see a similar story to Visualization 1. Western Europe, Australia, and North America appear to be among the highest in median income. Meanwhile, South America and Eastern Europe are relatively high. At the same time, countries in Asia seem to be relatively middle of the pack or lower while countries in Africa are in the bottom quintile again. 
 
+<img width="1008" alt="Screen Shot 2022-03-03 at 8 51 02 PM" src="https://user-images.githubusercontent.com/62949093/156683867-289a707e-d80c-483d-abd3-854fc10c95f6.png">
+
 ### Visualization 4: Gini Coefficient
 
 Finally, looking at the Gini Coefficient, we see that there are no consistent trends (as in the previous 3 visualizations). Some countries in North Africa have low GDP and low inequality. Meanwhile, countries in Southern Africa have low GDP and high inequality. Meanwhile in North America, Canada has high GDP and low inequality. Its neighbor, the USA, has high GDP and high inequality. Thus, it is clear that the Gini Coefficient is quite variable among different countries and cannot be predicted through looking at the country's region or GDP. 
+
+<img width="1004" alt="Screen Shot 2022-03-03 at 8 51 10 PM" src="https://user-images.githubusercontent.com/62949093/156683875-0806f7e0-6d50-490c-ba8d-39a7cc5da375.png">
 
 ## Part 2 
 
