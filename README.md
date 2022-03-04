@@ -14,6 +14,22 @@ There are 4 main statistics that I wanted to look into: GDP, GDP per Capita, Med
 
 Much more of the minute details are left out of our visualizations. For instance, we do not report any inform on statistics by quartile/decile because with a limitation of 4 visualizations, it is hard to include an understanding of the underlying distributions of the statistics of interest. Furthermore, insights regarding the quality of the data as well as the source of the data are also left out. I did this because I think the main statistics of interest are more important than where the data came from (assuming that the data is all of some certain decent quality). 
 
+### Visualization 1: GDP 
+
+Looking at GDP by country, it appears that the main contributors to the global economy are in North America and Europe. Meanwhile, the productivity of South America and parts of Asia are relatively low. It seems like the continent of Africa has many of the countries in the bottom 2 quintiles in terms of GDP. 
+
+### Visualization 2: GDP per Capita
+
+Looking at GDP per Capita, we get a different story from Visualization 1. While Europe also leads in GDP per Capita, GDP power houses in North America seem less productive on a per capita basis. Meanwhile, it becomes evident that countries in Asia are generally less productive on a per capita basis. Finally, the countries in Africa are still among the lowest in both productivity and productivity per person. 
+
+### Visualization 3: Median Income
+
+Looking at Median income, we see a similar story to Visualization 1. Western Europe, Australia, and North America appear to be among the highest in median income. Meanwhile, South America and Eastern Europe are relatively high. At the same time, countries in Asia seem to be relatively middle of the pack or lower while countries in Africa are in the bottom quintile again. 
+
+### Visualization 4: Gini Coefficient
+
+Finally, looking at the Gini Coefficient, we see that there are no consistent trends (as in the previous 3 visualizations). Some countries in North Africa have low GDP and low inequality. Meanwhile, countries in Southern Africa have low GDP and high inequality. Meanwhile in North America, Canada has high GDP and low inequality. Its neighbor, the USA, has high GDP and high inequality. Thus, it is clear that the Gini Coefficient is quite variable among different countries and cannot be predicted through looking at the country's region or GDP. 
+
 ## Part 2 
 
 ### Objective 
